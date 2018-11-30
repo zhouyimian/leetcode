@@ -32,7 +32,7 @@ public class Best_Time_to_Buy_and_Sell_Stock_III {
 	public int find(int start, int end,int[] prices) {
 		if(start>=end)
 			return 0;
-		if(end-start==1)
 		return 0;
+
 	}
 }
