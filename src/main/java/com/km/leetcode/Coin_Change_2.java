@@ -3,29 +3,22 @@ package com.km.leetcode;
 import java.util.Arrays;
 
 public class Coin_Change_2 {
-    int ans=0;
     public int change(int amount, int[] coins) {
-        Arrays.sort(coins);
-        if(amount==0)
-            return 1;
-        dfs(amount,0,coins);
-        return ans;
-    }
+        int[][] dp = new int[coins.length+1][amount+1];
+        dp[0][0] = 1;
 
-    private void dfs(int amount, int nowcoin,int[] coins) {
-        if(amount==0){
-            ans++;
-            return;
+        for (int i = 1; i <= coins.length; i++) {
+            dp[i][0] = 1;
+            for (int j = 1; j <= amount; j++) {
+                dp[i][j] = dp[i-1][j] + (j >= coins[i-1] ? dp[i][j-coins[i-1]] : 0);
+            }
         }
-        if(nowcoin>=coins.length||amount<coins[nowcoin])
-            return;
-        for(int i=0;i<=amount/coins[nowcoin];i++)
-            dfs(amount-coins[nowcoin]*i,nowcoin+1,coins);
+        return dp[coins.length][amount];
     }
 
     public static void main(String[] args) {
-        int[] coins={1,2,5};
+        int[] coins={3,5,7,8,9,10,11};
         Coin_Change_2 test=new Coin_Change_2();
-        System.out.println(test.change(5,coins));
+        System.out.println(test.change(500,coins));
     }
 }
