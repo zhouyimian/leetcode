@@ -41,6 +41,5 @@ public class Binary_Tree_Cameras {
         if(cover>0)
             return 2;
         return 0;
-
     }
 }
