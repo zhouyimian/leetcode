@@ -1,4 +1,4 @@
-package com.km.WeeklyContest127;
+package com.km.WeeklyContest126;
 
 public class Minimum_Cost_to_Merge_Stones {
     Integer[][][] memo;

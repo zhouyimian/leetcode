@@ -1,4 +1,4 @@
-package com.km.WeeklyContest127;
+package com.km.WeeklyContest126;
 
 public class Check_If_Word_Is_Valid_After_Substitutions {
     public boolean isValid(String S) {
