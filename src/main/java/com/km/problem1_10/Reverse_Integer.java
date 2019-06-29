@@ -1,4 +1,4 @@
-package com.km.leetcode;
+package com.km.problem1_10;
 public class Reverse_Integer {
 	public static int reverse(int x) {
         int res = 0;

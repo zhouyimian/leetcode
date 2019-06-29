@@ -1,4 +1,4 @@
-package com.km.leetcode;
+package com.km.problem1_10;
 
 import java.math.BigInteger;
 

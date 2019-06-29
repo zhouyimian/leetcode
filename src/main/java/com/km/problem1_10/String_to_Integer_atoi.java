@@ -1,4 +1,4 @@
-package com.km.leetcode;
+package com.km.problem1_10;
 
 public class String_to_Integer_atoi {
     public int myAtoi(String str) {
