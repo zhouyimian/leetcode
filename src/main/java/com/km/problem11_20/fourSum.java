@@ -1,8 +1,8 @@
-package com.km.leetcode;
+package com.km.problem11_20;
 
 import java.util.*;
 
-public class sum4 {
+public class fourSum {
 	public List<List<Integer>> fourSum(int[] nums, int target) {
 		List<List<Integer>> ans=new ArrayList<>();
 		Arrays.sort(nums);

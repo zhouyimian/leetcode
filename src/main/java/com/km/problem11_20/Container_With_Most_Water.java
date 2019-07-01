@@ -1,13 +1,16 @@
-package com.km.leetcode;
+package com.km.problem11_20;
 
 public class Container_With_Most_Water {
-    int ans = 0;
     public int maxArea(int[] height) {
-        for(int i = 0;i<height.length;i++){
-            for(int j = height.length-1;j>i;j--){
-                if((j-i)*height[i]<=ans)
-                    break;
-                ans = Math.max(ans,(j-i)*Math.min(height[i],height[j]));
+        int left = 0;
+        int right = height.length-1;
+        int ans = 0;
+        while(left<right){
+            ans = Math.max(ans,(right-left)*Math.min(height[left],height[right]));
+            if(height[left]>height[right]){
+                right--;
+            }else{
+                left++;
             }
         }
         return ans;

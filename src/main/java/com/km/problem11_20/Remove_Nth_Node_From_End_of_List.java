@@ -1,4 +1,4 @@
-package com.km.leetcode;
+package com.km.problem11_20;
 
 public class Remove_Nth_Node_From_End_of_List {
     class ListNode {

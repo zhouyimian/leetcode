@@ -1,4 +1,4 @@
-package com.km.leetcode;
+package com.km.problem11_20;
 
 import java.util.Arrays;
 
@@ -7,21 +7,22 @@ public class threeSum_Closest {
         Arrays.sort(nums);
         int diff = Integer.MAX_VALUE;
         int ans = 0;
-        for(int i = 0 ;i<nums.length;i++){
-            int first = i;
-            int second = i+1;
+        int length = nums.length;
+        for(int i = 0 ;i<length;i++){
+            int start = i+1;
             int end = nums.length-1;
-            while(end>second){
-                if(Math.abs(target-nums[first]-nums[second]-nums[end])<=diff){
-                    diff = Math.abs(target-nums[first]-nums[second]-nums[end]);
-                    ans = nums[first]+nums[second]+nums[end];
+            while(end>start){
+                int res = target - (nums[i]+nums[start]+nums[end]);
+                if(Math.abs(res)<=diff){
+                    diff = Math.abs(res);
+                    ans = nums[i]+nums[start]+nums[end];
                     if(diff==0)
                         return target;
                 }
-                if(nums[first]+nums[second]+nums[end]>target)
+                if(res<0)
                     end--;
-                else if(nums[first]+nums[second]+nums[end]<target)
-                    second++;
+                else
+                    start++;
             }
         }
         return ans;
