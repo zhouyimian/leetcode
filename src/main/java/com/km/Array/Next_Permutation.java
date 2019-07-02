@@ -1,9 +1,9 @@
-package com.km.leetcode;
+package com.km.Array;
 
 import java.util.Arrays;
 
 public class Next_Permutation {
-	public static void nextPermutation(int[] nums) {
+	public void nextPermutation(int[] nums) {
 		for(int i=nums.length-1;i>0;i--) {
 			if(nums[i-1]<nums[i]) {
 				int min=Integer.MAX_VALUE;
@@ -22,14 +22,15 @@ public class Next_Permutation {
 		Arrays.sort(nums);
 		
 	}
-	static void exchange(int[] nums,int i,int j) {
+	void exchange(int[] nums,int i,int j) {
 		int temp=nums[i];
 		nums[i]=nums[j];
 		nums[j]=temp;
 	}
 	public static void main(String[] args) {
+		Next_Permutation test = new Next_Permutation();
 		int[] n= {3,2,1};
-		nextPermutation(n);
+		test.nextPermutation(n);
 		for(int i:n) {
 			System.out.println(i);
 		}
