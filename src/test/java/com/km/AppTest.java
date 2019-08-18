@@ -1,51 +1,68 @@
 package com.km;
 
+import java.util.*;
+
 public class AppTest {
-    public String addStrings(String num1, String num2) {
-        char[] c1 = num1.toCharArray();
-        char[] c2 = num2.toCharArray();
-        int[] ans = new int[Math.max(num1.length(),num2.length())+1];
-        int index1 = num1.length()-1;
-        int index2 = num2.length()-1;
-        int index = 0;
-        while (index1>=0&&index2>=0){
-            ans[index++] = c1[index1--]+c2[index2--]-2*'0';
+    static class Node{
+        int numA;
+        int numB;
+        int res;
+        public Node(int numA,int numB,int m){
+            this.numA = numA;
+            this.numB = numB;
+            this.res = (numA+numB)%m;
         }
-        if(index1>=0){
-            while(index1>=0)
-                ans[index++] = c1[index1--]-'0';
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        PriorityQueue<Node> queue = new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                return o2.res-o1.res;
+            }
+        });
+        int[] numsA = new int[n];
+        int[] numsB = new int[n];
+        Map<Integer,Integer> mapA = new HashMap<>();
+        Map<Integer,Integer> mapB = new HashMap<>();
+        for(int i = 0 ;i<n;i++){
+            numsA[i] = sc.nextInt();
+            mapA.put(numsA[i],mapA.getOrDefault(numsA[i],0)+1);
         }
-        else{
-            while (index2>=0)
-                ans[index++] = c2[index2--]-'0';
+        for(int i = 0 ;i<n;i++){
+            numsB[i] = sc.nextInt();
+            mapB.put(numsB[i],mapB.getOrDefault(numsB[i],0)+1);
         }
-        for(int i = 0;i<ans.length-1;i++){
-            if(ans[i]>=10) {
-                ans[i + 1] += ans[i] / 10;
-                ans[i] %= 10;
+        for(int i = 0;i<n;i++){
+            for(int j = 0;j<n;j++){
+                queue.add(new Node(numsA[i],numsB[j],m));
             }
         }
-        reverse(ans);
-        StringBuilder sb = new StringBuilder();
-        if(ans[0]==0){
-            for(int i = 1;i<ans.length;i++)
-                sb.append(ans[i]+"");
+        int[] ans = new int[n];
+        int index = 0;
+        while (index!=ans.length){
+            Node node = queue.poll();
+            if(mapA.containsKey(node.numA)&&mapB.containsKey(node.numB)){
+                ans[index++] = node.res;
+                if(mapA.get(node.numA)==1){
+                    mapA.remove(node.numA);
+                }else{
+                    mapA.put(node.numA,mapA.get(node.numA)-1);
+                }
+                if(mapB.get(node.numB)==1){
+                    mapB.remove(node.numB);
+                }else{
+                    mapB.put(node.numB,mapB.get(node.numB)-1);
+                }
+            }
         }
-        else{
-            for(int num:ans)
-                sb.append(num+"");
+        for(int i = 0;i<n;i++){
+            if(i!=n-1)
+                System.out.print(ans[i]+" ");
+            else
+                System.out.println(ans[i]);
         }
-        return sb.toString();
-    }
-    public void reverse(int[] ans){
-        for(int i = 0;i<ans.length/2;i++){
-            int temp = ans[i];
-            ans[i] = ans[ans.length-1-i];
-            ans[ans.length-1-i] = temp;
-        }
-    }
-    public static void main(String[] args) throws InterruptedException {
-        AppTest test = new AppTest();
-        System.out.println(test.addStrings("9234","867"));
     }
 }

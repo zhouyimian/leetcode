@@ -1,55 +1,39 @@
 package com.km;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class AppTest2 {
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        Map<Integer,List<Integer>> graph = new HashMap<>();
-        for(int i = 0;i<numCourses;i++)
-            graph.put(i,new ArrayList<>());
-        int[] count = new int[numCourses];
-        for(int i = 0;i<prerequisites.length;i++){
-            List<Integer> list = graph.get(prerequisites[i][1]);
-            list.add(prerequisites[i][0]);
-            graph.put(prerequisites[i][1],list);
-            count[prerequisites[i][0]]++;
-        }
-        List<Integer> queue = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
-        for(int i = 0;i<numCourses;i++) {
-            if (count[i] == 0) {
-                queue.add(i);
+    public String toGoatLatin(String S) {
+        String[] words = S.split(" ");
+        StringBuilder ans = new StringBuilder();
+        for(int i = 0;i<words.length;i++){
+            char c = words[i].charAt(0);
+            if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'
+                    ||c=='A'||c=='E'||c=='I'||c=='O'||c=='U'){
+                StringBuilder temp = new StringBuilder(words[i]);
+                temp.append("ma");
+                for(int j = 0;j<=i;j++)
+                    temp.append("a");
+                if(i!=words.length-1)
+                    temp.append(" ");
+                ans.append(temp);
+            }else{
+                StringBuilder temp = new StringBuilder(words[i].substring(1));
+                temp.append(c);
+                temp.append("ma");
+                for(int j = 0;j<=i;j++)
+                    temp.append("a");
+                if(i!=words.length-1)
+                    temp.append(" ");
+                ans.append(temp);
             }
         }
-        result.addAll(queue);
-        while (queue.size()!=0){
-            List<Integer> temp = new ArrayList<>();
-            for(int i = 0;i<queue.size();i++){
-                int cur = queue.get(i);
-                List<Integer> course = graph.get(cur);
-                for(int j = 0;j<course.size();j++){
-                    count[course.get(j)]--;
-                    if(count[course.get(j)]==0) {
-                        temp.add(course.get(j));
-                    }
-                }
-            }
-            queue.clear();
-            queue.addAll(temp);
-            result.addAll(queue);
-        }
-        if(result.size()==numCourses){
-            int[] ans = new int[numCourses];
-            for(int i = 0;i<numCourses;i++)
-                ans[i] = result.get(i);
-            return ans;
-        }
-        return new int[0];
+        return ans.toString();
     }
 
     public static void main(String[] args) {
 
-        int[] tree = {0, 1, 2, 2};
-        AppTest2 test2 = new AppTest2();
+        AppTest2 t = new AppTest2();
+        System.out.println(t.toGoatLatin("I speak Goat Latin"));
     }
 }
