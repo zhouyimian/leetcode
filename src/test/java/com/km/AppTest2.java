@@ -1,39 +1,49 @@
 package com.km;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class AppTest2 {
-    public String toGoatLatin(String S) {
-        String[] words = S.split(" ");
-        StringBuilder ans = new StringBuilder();
-        for(int i = 0;i<words.length;i++){
-            char c = words[i].charAt(0);
-            if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'
-                    ||c=='A'||c=='E'||c=='I'||c=='O'||c=='U'){
-                StringBuilder temp = new StringBuilder(words[i]);
-                temp.append("ma");
-                for(int j = 0;j<=i;j++)
-                    temp.append("a");
-                if(i!=words.length-1)
-                    temp.append(" ");
-                ans.append(temp);
-            }else{
-                StringBuilder temp = new StringBuilder(words[i].substring(1));
-                temp.append(c);
-                temp.append("ma");
-                for(int j = 0;j<=i;j++)
-                    temp.append("a");
-                if(i!=words.length-1)
-                    temp.append(" ");
-                ans.append(temp);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        StringBuilder sb = new StringBuilder(s);
+        int ans = 1;
+        while (sb.length()!=0){
+            sb.deleteCharAt(0);
+            if(sb.length()==1)
+                break;
+            int count = 0;
+            for(int i = 0;i<sb.length();i++){
+                if(sb.charAt(i)==')'){
+                    sb.deleteCharAt(i);
+                    if(check(sb))
+                        count++;
+                    sb.insert(i,')');
+                }
+            }
+            ans*=count;
+            for(int i = 0;i<sb.length();i++){
+                if(sb.charAt(i)==')'){
+                    sb.deleteCharAt(i);
+                    if(check(sb))
+                        break;
+                    sb.insert(i,')');
+                }
             }
         }
-        return ans.toString();
+        System.out.println(ans==0?1:ans);
     }
 
-    public static void main(String[] args) {
-
-        AppTest2 t = new AppTest2();
-        System.out.println(t.toGoatLatin("I speak Goat Latin"));
+    private static boolean check(StringBuilder sb) {
+        int count = 0;
+        for(int i = 0;i<sb.length();i++){
+            if(sb.charAt(i)=='(')
+                count++;
+            else
+                count--;
+            if(count<0)
+                return false;
+        }
+        return true;
     }
 }
