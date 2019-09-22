@@ -1,15 +1,14 @@
 package com.km;
 
-import java.util.concurrent.ThreadPoolExecutor;
+import com.km.WeeklyContest154.K_Concatenation_Maximum_Sum;
+
+import java.util.*;
 
 public class Main {
-    public static void main(String [] srgs) {
-        int num = 5;
-        check(num);
-        System.out.println(num);
-
-    }
-    public static void check(int num){
-        num--;
+    public static void main(String[] args) {
+        List<K_Concatenation_Maximum_Sum> list = new ArrayList<>();
+        while (true){
+            list.add(new K_Concatenation_Maximum_Sum());
+        }
     }
 }
