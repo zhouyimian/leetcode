@@ -1,14 +1,23 @@
 package com.km;
 
-import com.km.WeeklyContest154.K_Concatenation_Maximum_Sum;
 
 import java.util.*;
 
 public class Main {
+    public Object instance = null;
+    private static final int _1MB = 1024*1024;
+    private byte[] bigSize = new byte[2*_1MB];
     public static void main(String[] args) {
-        List<K_Concatenation_Maximum_Sum> list = new ArrayList<>();
-        while (true){
-            list.add(new K_Concatenation_Maximum_Sum());
-        }
+        Main m1 = new Main();
+        Main m2 = new Main();
+
+        m1.instance = m2;
+        m2.instance = m1;
+
+//        m1 = null;
+//        m2 = null;
+
+        System.gc();
     }
+
 }
