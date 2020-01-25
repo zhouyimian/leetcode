@@ -3,9 +3,14 @@ package com.km;
 
 import org.apache.commons.cli.*;
 
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) throws ParseException {
-        String s = "hello";
-        System.out.println(s.substring(s.length()-1));
+        Main test = new Main();
+        Set<String> set = new HashSet<>();
+        System.out.println(set.add("aaa"));
+        System.out.println(set.add("aaa"));
+        System.out.println();
     }
 }
