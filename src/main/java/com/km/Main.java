@@ -7,10 +7,18 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
-        Main test = new Main();
-        Set<String> set = new HashSet<>();
-        System.out.println(set.add("aaa"));
-        System.out.println(set.add("aaa"));
-        System.out.println();
+        System.out.println(dealString("Minimum Difficulty of a Job Schedule"));
+        System.out.println(dealkuohao("[[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]]"));
+    }
+    public static String dealString(String s){
+        s = s.replace(" ","_");
+        s = s.replace(",","_");
+        s = s.replace("-","_");
+        return s;
+    }
+    public static String dealkuohao(String s){
+        s = s.replace("[","{");
+        s = s.replace("]","}");
+        return s;
     }
 }
