@@ -57,6 +57,7 @@ public class Minimum_Difficulty_of_a_Job_Schedule {
                         max = Math.max(max, jobDifficulty[k - 1]);
                     res[i][j] = max;
                 }
+
             }
         }
         return res;
