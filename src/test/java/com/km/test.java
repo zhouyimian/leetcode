@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Jump Game IV");
+        String s = new String("[[\"#\",\".\",\"#\",\"#\",\".\",\"#\"],[\".\",\"#\",\"#\",\"#\",\"#\",\".\"],[\"#\",\".\",\"#\",\"#\",\".\",\"#\"]]");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
