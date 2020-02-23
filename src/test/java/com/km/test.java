@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Construct Target Array With Multiple Sums");
+        String s = new String("Largest Multiple of Three");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
