@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Count All Valid Pickup and Delivery Options");
+        String s = new String("[[3,4,3],[2,2,2],[2,1,1]]");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
