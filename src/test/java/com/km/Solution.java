@@ -3,44 +3,42 @@ package com.km;
 import java.util.*;
 
 public class Solution {
-    public List<String> letterCasePermutation(String S) {
-        List<String> ans = new ArrayList<>();
-        Set<String> set = new HashSet<>();
+    public String minRemove (String s) {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0;i<S.length();i++){
-            char c = S.charAt(i);
-            if(c>='a'&&c<='z'){
-                sb.append(c);
-
-            }else if(c>='A'&&c<='Z'){
-
+        Stack<Character> stack = new Stack<>();
+        boolean flag = false;
+        for(char c:s.toCharArray()){
+            if(c=='('){
+                flag = true;
+                stack.push(c);
+            }else if(c==')'){
+                if(stack.isEmpty())
+                    continue;
+                else{
+                    StringBuilder tempsb = new StringBuilder();
+                    tempsb.append(c);
+                    while (!stack.isEmpty()) {
+                        char temp = stack.pop();
+                        tempsb.append(temp);
+                        if (temp == '(') {
+                            break;
+                        }
+                    }
+                    sb.append(tempsb.reverse());
+                    if(stack.isEmpty())
+                        flag = false;
+                }
             }else{
-                sb.append(c);
+                if(flag)
+                    stack.push(c);
+                else
+                    sb.append(c);
             }
         }
-        return ans;
+        return sb.toString();
     }
-
-    private void deal(int[][] A, int line, int column) {
-        List<Integer> nums = new ArrayList<>();
-        int tempLine = line;
-        int tempColumn = column;
-        while (tempLine>=0&&tempColumn<A.length){
-            nums.add(A[tempLine--][tempColumn++]);
-        }
-        tempLine = line;
-        tempColumn = column;
-        for(int i = nums.size()-1;i>=0;i--){
-            A[tempLine--][tempColumn++]=nums.get(i);
-        }
-    }
-
-
     public static void main(String[] args) {
-        Solution test = new Solution();
-    }
-
-    private static void function(Solution solution) {
-        System.out.println(solution);
+        Solution s = new Solution();
+        System.out.println(s.minRemove("))(("));
     }
 }
