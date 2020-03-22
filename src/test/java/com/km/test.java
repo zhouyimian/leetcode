@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Pizza With 3n Slices");
+        String s = new String("Longest Happy Prefix");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
