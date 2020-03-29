@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Longest Happy Prefix");
+        String s = new String("Find All Good Strings");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
