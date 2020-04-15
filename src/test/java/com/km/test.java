@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Number of Ways to Paint N × 3 Grid");
+        String s = new String("Construct K Palindrome Strings");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
