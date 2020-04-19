@@ -4,7 +4,7 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Construct K Palindrome Strings");
+        String s = new String("Build Array Where You Can Find The Maximum Exactly K Comparisons");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
