@@ -1,10 +1,8 @@
 package com.km;
 
-import java.util.*;
-
 public class test {
     public static void main(String[] args) {
-        String s = new String("Build Array Where You Can Find The Maximum Exactly K Comparisons");
+        String s = new String("Maximum Points You Can Obtain from Cards");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
