@@ -2,7 +2,7 @@ package com.km;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Maximum Points You Can Obtain from Cards");
+        String s = new String("Find the Kth Smallest Sum of a Matrix With Sorted Rows");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
@@ -12,6 +12,7 @@ public class test {
     private static String dealtimu(String s) {
         s = s.replace(" ","_");
         s = s.replace("-","_");
+        s = s.replace("'","_");
         return s;
     }
 
