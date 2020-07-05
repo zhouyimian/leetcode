@@ -1,44 +1,25 @@
 package com.km;
 
+import java.io.File;
 import java.util.*;
 
 public class Solution {
-    public String minRemove (String s) {
-        StringBuilder sb = new StringBuilder();
-        Stack<Character> stack = new Stack<>();
-        boolean flag = false;
-        for(char c:s.toCharArray()){
-            if(c=='('){
-                flag = true;
-                stack.push(c);
-            }else if(c==')'){
-                if(stack.isEmpty())
-                    continue;
-                else{
-                    StringBuilder tempsb = new StringBuilder();
-                    tempsb.append(c);
-                    while (!stack.isEmpty()) {
-                        char temp = stack.pop();
-                        tempsb.append(temp);
-                        if (temp == '(') {
-                            break;
-                        }
-                    }
-                    sb.append(tempsb.reverse());
-                    if(stack.isEmpty())
-                        flag = false;
-                }
-            }else{
-                if(flag)
-                    stack.push(c);
-                else
-                    sb.append(c);
+    public static void main(String[] args) {
+        String path = "C:\\Users\\Administrator\\Desktop\\output";
+        File file = new File(path);
+        changeFileName(file.getPath());
+    }
+
+    private static void changeFileName(String path) {
+        File file = new File(path);
+        File[] array = file.listFiles();
+        for (int i = 0; i < array.length; i++) {
+            String name = array[i].getName();
+            String suffix = name.substring(name.lastIndexOf('.')+1);
+            if(suffix.equals("jpg")||suffix.equals("png")){
+                Date date = new Date();
+                array[i].setLastModified(date.getTime());
             }
         }
-        return sb.toString();
-    }
-    public static void main(String[] args) {
-        Solution s = new Solution();
-        System.out.println(s.minRemove("))(("));
     }
 }
