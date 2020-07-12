@@ -18,7 +18,6 @@ public class Path_with_Maximum_Probability {
             graph.get(to).put(from,succProb[i]);
         }
         double[] pro = new double[n];
-        Map<Integer,Double> map = graph.get(start);
         Map<Integer,Double> queue = new HashMap<>();
         queue.put(start,1.0);
         while (!queue.isEmpty()){
