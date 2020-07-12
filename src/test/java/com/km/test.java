@@ -2,7 +2,7 @@ package com.km;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("[[0,1],[1,2],[0,2]]");
+        String s = new String("Best Position for a Service Centre");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
