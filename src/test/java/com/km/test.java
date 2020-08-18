@@ -2,7 +2,7 @@ package com.km;
 
 public class test {
     public static void main(String[] args) {
-        String s = new String("Best Position for a Service Centre");
+        String s = new String("Magnetic Force Between Two Balls");
         String kuohao = dealkuohao(s);
         String timu = dealtimu(s);
         System.out.println(kuohao);
